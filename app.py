@@ -3,19 +3,27 @@ import json
 import os
 from openai import OpenAI
 
-# 1. API Şifresi (client = OpenAI(api_key=st.secrets["OPENAI_API_KEY"])
+# 1. API Şifresi (GİZLİ KASADAN ÇEKİLİYOR)
 client = OpenAI(api_key=st.secrets["OPENAI_API_KEY"])
 
 # 2. Sayfa Tasarımı
 st.set_page_config(page_title="Fandomfluent", page_icon="📚", layout="wide")
 
+# ================= GİZLİLİK VE TASARIM AYARLARI =================
+# Sağ üstteki GitHub logosunu, menüyü ve alt bilgiyi gizleyen CSS kodu
+hide_streamlit_style = """
+<style>
+#MainMenu {visibility: hidden;}
+header {visibility: hidden;}
+footer {visibility: hidden;}
+.st-emotion-cache-1wbqy5l {display: none;}
+</style>
+"""
+st.markdown(hide_streamlit_style, unsafe_allow_html=True)
+
 # ================= KULLANICI VERİTABANI (LOGİN) =================
-# Buraya dilediğiniz kadar kullanıcı adı ve şifre ekleyebilirsiniz.
-KULLANICILAR = {
-    "ogrenci1": "sifre123",
-    "ogrenci2": "okuma2026",
-    "ezgi": "admin"
-}
+# Şifreleri artık koddan değil, Streamlit'in gizli kasasından çekiyoruz
+KULLANICILAR = dict(st.secrets["sifreler"])
 
 # ================= GİRİŞ SİSTEMİ (AUTHENTICATION) =================
 if "giris_yapildi" not in st.session_state:
@@ -27,17 +35,16 @@ if not st.session_state["giris_yapildi"]:
     st.write("Lütfen devam etmek için kullanıcı adı ve şifrenizi girin.")
     
     kullanici_adi = st.text_input("Kullanıcı Adı")
-    sifre = st.text_input("Şifre", type="password") # type="password" şifreyi yıldızlar
+    sifre = st.text_input("Şifre", type="password")
     
     if st.button("Giriş Yap"):
         if kullanici_adi in KULLANICILAR and KULLANICILAR[kullanici_adi] == sifre:
             st.session_state["giris_yapildi"] = True
             st.session_state["aktif_kullanici"] = kullanici_adi
-            st.rerun() # Sayfayı yenileyip ana uygulamaya geçer
+            st.rerun() 
         else:
             st.error("Hatalı kullanıcı adı veya şifre! Lütfen tekrar deneyin.")
             
-    # Giriş yapılmadıysa alt satırlardaki hiçbir kodu çalıştırma (Uygulamayı burada durdurur)
     st.stop() 
 
 # ================= HAFIZA (STATE) YÖNETİMİ =================
@@ -55,7 +62,6 @@ if "orijinal_url" not in st.session_state:
     st.session_state["orijinal_url"] = ""
 
 # ================= DİL SEÇİMİ =================
-# Hoşgeldin mesajı ile birlikte dil seçimi
 st.success(f"Hoş geldin, {st.session_state['aktif_kullanici']}!")
 secilen_dil = st.radio("🌐 Dil / Language:", ["Türkçe", "English"], horizontal=True)
 lang = "TR" if secilen_dil == "Türkçe" else "EN"
@@ -152,7 +158,7 @@ texts = {
 }
 t = texts[lang]
 
-# ================= SOL MENÜ (SADECE ARAMA VE ÇIKIŞ YAP) =================
+# ================= SOL MENÜ =================
 with st.sidebar:
     st.header(t["dict_header"])
     st.write(t["dict_desc"])
@@ -171,7 +177,6 @@ with st.sidebar:
             st.error(t["dict_not_found"])
             
     st.markdown("---")
-    # Çıkış Yap Butonu
     if st.button("🚪 Çıkış Yap / Logout"):
         st.session_state["giris_yapildi"] = False
         st.session_state["aktif_kullanici"] = ""
