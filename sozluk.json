@@ -1,0 +1,54 @@
+{
+  "Genel Fanfiction Jargonları": {
+    "y/n": {
+      "TR": "Your Name (Okuyucunun ana karakter yerine kendi ismini okuduğu yer)",
+      "EN": "Your Name (A placeholder used so the reader can insert their own name)"
+    },
+    "canon": {
+      "TR": "Orijinal hikayeye sadık, yazar tarafından resmi olarak kabul edilen olaylar",
+      "EN": "Events or elements that are officially accepted as part of the original story"
+    },
+    "au": {
+      "TR": "Alternate Universe (Karakterlerin kendi dünyalarından farklı bir evrende olduğu kurgu)",
+      "EN": "Alternate Universe (A setting that diverges from the original canon)"
+    },
+    "angst": {
+      "TR": "Karakterlerin yoğun üzüntü yaşadığı, okuyucuyu duygusal olarak zorlayan kurgu türü",
+      "EN": "A story featuring heavy emotional turmoil, sadness, or anxiety for the characters"
+    },
+    "fluff": {
+      "TR": "Mutlu, hafif, rahatlatıcı ve romantik hikaye türü",
+      "EN": "A lighthearted, happy, and usually romantic story with no serious drama"
+    }
+  },
+  "Stray Kids": {
+    "stay": {
+      "TR": "Stray Kids grubunun resmi hayran kitlesi",
+      "EN": "The official fandom name for Stray Kids"
+    },
+    "skz": {
+      "TR": "Stray Kids isminin kısaltması",
+      "EN": "Abbreviation for Stray Kids"
+    }
+  },
+  "BTS": {
+    "army": {
+      "TR": "BTS grubunun resmi hayran kitlesi",
+      "EN": "The official fandom name for BTS"
+    },
+    "borahae": {
+      "TR": "I purple you (Seni morluyorum - BTS ve hayranları arasında sevgi ifadesi)",
+      "EN": "I purple you (An expression of love and trust between BTS and their fans)"
+    }
+  },
+  "Taylor Swift": {
+    "swiftie": {
+      "TR": "Taylor Swift hayranı",
+      "EN": "A fan of Taylor Swift"
+    },
+    "era": {
+      "TR": "Sanatçının belirli bir albüm dönemi ve o albüme ait estetik tarzı",
+      "EN": "A specific album era and aesthetic of the artist"
+    }
+  }
+}
